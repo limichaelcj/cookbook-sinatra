@@ -1,0 +1,26 @@
+<style>
+  a {
+    color: dodgerblue;
+    cursor: pointer;
+  }
+</style>
+
+<div style="font-family:'monospace';background-color:#f0f0f0;padding:20px">
+
+  <h1>Recipes</h1>
+
+  <ul>
+    <% @recipes.each_with_index do |recipe, index| %>
+      <li style="margin:30px">
+        <strong style="font-size:20px"><%= recipe.name %></strong><br />
+        <span style="color:gray;line-height:30px"><%= recipe.details %></span><br />
+        <%= recipe.description %>
+        <br /><br />
+        <a href="/view/<%= index%>">View</a> |
+        <a>Mark</a> |
+        <a>Delete</a>
+      </li>
+    <% end %>
+  </ul>
+
+</div>

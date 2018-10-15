@@ -7,6 +7,15 @@ configure :development do
   BetterErrors.application_root = File.expand_path('..', __FILE__)
 end
 
+require_relative 'lib/cookbook'
+
 get '/' do
-  'Hello world!'
+  @cookbook = Cookbook.new('data/recipes.csv')
+  @recipes = @cookbook.all
+  @url_view = '/view/'
+  erb :recipe_list
+end
+
+get '/view/:index' do
+  "Index: " + params[:index]
 end
